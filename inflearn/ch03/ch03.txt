@@ -1,0 +1,47 @@
+# 03 Queue & stack
+
+1. 큐(Queue)
+
+시간 순서상 먼저 저장한 데이터가 먼저 출력되는
+선입선출 FIFO(First In First Out) 형식으로 데이터를 저장하는 자료구조
+
+- enqueue : queue의 rear에 데이터를 추가
+- dequeue : queue의 front에서 데이터를 추출
+
+구현 방법
+    Array List based
+        q = []
+        q.append(5) -> enqueue - O(1)
+        q.pop(0)    -> dequeue - O(n)
+
+    Linked List based (시간복잡도 유리)
+        from collections import deque
+        q = deque()
+        q.append(5) -> enqueue - O(1)
+        q.popleft() -> dequeue - O(1)
+
+--------------------------------------------------------------------------------
+
+2. 스택(Stack)
+
+시간 순서상 가장 최근에 추가한 데이터가 가장 먼저 나오는
+후입선출 LIFO(Last In Last Out) 형식으로 데이터를 저장하는 자료구조
+
+- push : stack의 top에 데이터 추가
+- pop  : stack의 top에서 데이터 추출
+
+구현 방법
+    Array List based
+        stack = []
+        stack.append(5) -> push - O(1)
+        stack.pop()     -> pop  - O(1)
+
+    Linked List based
+
+--------------------------------------------------------------------------------
+
+★코테 적용 방법★
+    Stack의 다양한 활용
+
+    (1) LIFO 특성을 활용한 문제
+    (2) DFS(깊이 우선 탐색)에 사용
