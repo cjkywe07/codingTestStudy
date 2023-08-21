@@ -34,10 +34,10 @@ def twoSum(nums, target):
 
     for v in nums:
         needed_num = target - v
-        if needed_num != v and needed_num in memo:
+        if needed_num != v and (needed_num in memo):
             return True
         
     return False
 
-print(twoSum([4, 1, 9, 7, 5, 3, 16], 14))
+# print(twoSum([4, 1, 9, 7, 5, 3, 16], 14))
 print(twoSum([2, 1, 5, 7], 4))

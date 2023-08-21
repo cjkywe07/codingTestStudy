@@ -24,8 +24,8 @@ ex)
     2 <= nums.length <= 10^4 에 따라 시간복잡도는 O(n^2) 보다 작은 알고리즘 사용
 
 (2) 접근 방법
-    1) 보통 완전탐색으로 시작 - 반복문으로 해결해보기
-       but, 이중반복문 - O(n^2) -> 실제로는 선택X, 연습만 해보기
+    보통 완전탐색으로 시작
+    but, 이중반복문 - O(n^2) -> 실제로는 선택X, 연습만 해보기
 
 (3) 코드 설계
     for i 0 ~ n
@@ -41,10 +41,12 @@ ex)
 
 def twoSum(nums, target):
     n = len(nums)
+    
     for i in range(n):
         for j in range(i + 1, n):
             if nums[i] + nums[j] == target:
                 return True
+            
     return False
 
 print(twoSum([4, 1, 9, 7, 5, 3, 16], 14))
