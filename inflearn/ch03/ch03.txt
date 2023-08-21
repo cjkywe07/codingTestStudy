@@ -5,8 +5,8 @@
 시간 순서상 먼저 저장한 데이터가 먼저 출력되는
 선입선출 FIFO(First In First Out) 형식으로 데이터를 저장하는 자료구조
 
-- enqueue : queue의 rear에 데이터를 추가
-- dequeue : queue의 front에서 데이터를 추출
+- enqueue : queue의 rear(뒤)에 데이터를 추가
+- dequeue : queue의 front(앞)에서 데이터를 추출
 
 구현 방법
     Array List based
@@ -19,6 +19,12 @@
         q = deque()
         q.append(5) -> enqueue - O(1)
         q.popleft() -> dequeue - O(1)
+
+        파이썬에 정의된 deque은 doubly linked list로 구현되어 있으므로,
+        맨 앞, 맨 뒤 모두 데이터의 삽입과 제거가 가능
+
+            맨 앞 삽입 - appendleft() / 맨 뒤 삽입 - append() -> O(1)
+            맨 앞 제거 - popleft()    / 맨 뒤 제거 - pop()    -> O(1)
 
 --------------------------------------------------------------------------------
 
@@ -37,8 +43,6 @@
         stack.pop()     -> pop  - O(1)
 
     Linked List based
-
---------------------------------------------------------------------------------
 
 ★코테 적용 방법★
     Stack의 다양한 활용

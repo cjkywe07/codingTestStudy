@@ -1,0 +1,48 @@
+# 04 Hash Table
+
+1. 해시테이블(Hash Table)
+
+- 효율적인 탐색(빠른 탐색)을 위한 자료구조로써 key-value 쌍의 데이터를 저장
+- hash function h를 활용하여 key값을 k라고 했을 때,
+  h(k) 함수값에 해당하는 index에 (key, value) 데이터 쌍을 저장
+- 저장, 삭제, 검색의 시간복잡도는 모두 O(1) 
+
+직접 주소화 테이블(Direct-address Table)
+    key값이 k인 데이터를 index k 위치에 저장하는 방식
+
+    문제점
+        불필요한 공간 낭비
+        key값으로 문자열이 올 수 없음
+
+    따라서 (key, value) 데이터 쌍을 저장하기 위한 방법으로 잘 맞지 않으므로 해시테이블 이용
+
+collision
+    서로 다른 key의 해시값이 똑같을 때 충돌 발생
+
+    해결 방법
+        Open addressing
+        Seperate chaining
+
+구현 방법
+    Array List based (Open addressing)
+        파이썬의 딕셔너리
+
+    Array List + Linked List based (Seperate chaining)
+
+--------------------------------------------------------------------------------
+
+2. 딕셔너리(Dictionary)
+
+key-value 쌍이 있을 때 key를 index처럼 사용
+
+in 연산자
+    딕셔너리에서 key가 존재하는지 확인 하여 True/False 반환
+    시간복잡도 - O(1)
+
+    리스트에서 in 연산자의 시간복잡도 - O(n)
+
+★코테 적용 방법★
+    해시테이블의 활용
+
+    (1) 메모리를 사용해서 시간복잡도를 줄일 때 사용
+        key in { } 가 핵심

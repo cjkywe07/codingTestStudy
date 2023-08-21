@@ -55,6 +55,7 @@ def dailyTemperatures(temperatures):
         while stack and stack[-1][1] < cur_temp:
             prev_day = stack.pop()[0]
             answer[prev_day] = cur_day - prev_day
+            
         stack.append((cur_day, cur_temp))
 
     return answer
