@@ -65,7 +65,7 @@ ex)
 
 #     return longestCnt
 
-'''해쉬셋 이용'''
+'''셋 이용'''
 def longestConsecutive(nums):
     longestCnt = 0
     numSet = set(nums)

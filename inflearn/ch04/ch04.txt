@@ -25,7 +25,7 @@ collision
 
 구현 방법
     Array List based (Open addressing)
-        파이썬의 딕셔너리
+        파이썬의 딕셔너리 + 셋
 
     Array List + Linked List based (Seperate chaining)
 
