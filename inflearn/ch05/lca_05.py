@@ -6,10 +6,10 @@
 단, 노드는 자기자신의 후손이 될 수 있다.
 
 ex)
-    Input: root = [3, 5, 1, 6, 2, 0, 8, null, null, 7, 4], p = 5, q = 1
+    Input: root = [3, 5, 1, 6, 2, 0, 8, None, None, 7, 4], p = 5, q = 1
     Output: 3
 
-    Input: root = [3, 5, 1, 6, 2, 0, 8, null, null, 7, 4], p = 5, q = 4
+    Input: root = [3, 5, 1, 6, 2, 0, 8, None, None, 7, 4], p = 5, q = 4
     Output: 5
 
     Input: root = [1, 2], p = 1, q = 2
@@ -30,9 +30,14 @@ ex)
     0 <= nums.length <= 10^5 에 따라 시간복잡도는 O(n^2) 보다 작은 알고리즘 사용
 
 (2) 접근 방법
-    post order 이용
+    postorder 이용 - O(n)
 
 (3) 코드 설계
+    base case
+
+    left = lca()
+    right = lca()
+
     if root == p or q:
         return root
     elif root.left && root.right:
@@ -47,37 +52,7 @@ ex)
 
 # ------------------------------------------------------------
 
-from collections import deque
-
-class TreeNode:
-    def __init__(self, data = 0):
-        self.data = data
-        self.left = None
-        self.right = None
-
-def arrayToTree(arr):
-    root = TreeNode(arr[0])
-    q = deque()
-    q.append(root)
-
-    idx = 1
-    while idx < len(arr):
-        curr = q.popleft()
-
-        if arr[idx] != None:
-            curr.left = TreeNode(arr[idx])
-            q.append(curr.left)
-        idx += 1
-
-        if idx >= len(arr):
-            return root
-
-        if arr[idx] != None:
-            curr.right = TreeNode(arr[idx])
-            q.append(curr.right)
-        idx += 1
-
-    return root
+from arrayToTree_04 import arrayToTree
 
 def lca(root, p, q):
     if root == None:
@@ -85,10 +60,12 @@ def lca(root, p, q):
     
     left = lca(root.left, p, q)
     right = lca(root.right, p, q)
+
     if root.data == p or root.data == q:
         return root.data
     elif left and right:
         return root.data
+    
     return left or right
 
 root = arrayToTree([3, 5, 1, 6, 2, 0, 8, None, None, 7, 4])

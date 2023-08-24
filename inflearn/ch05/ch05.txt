@@ -30,3 +30,5 @@ root의 부모-자식 관계의 subtree로 구성
     트리 활용(입문편)
         (1) 트리 구현
         (2) 트리 순회
+            level order
+            postorder
