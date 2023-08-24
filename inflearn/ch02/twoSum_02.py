@@ -24,19 +24,40 @@
 
 # ------------------------------------------------------------
 
+# def twoSum(nums, target):
+#     nums = []
+#     nums.sort()
+#     l, r = 0, len(nums) - 1
+
+#     while l < r:
+#         if nums[l] + nums[r] == target:
+#             return True
+#         elif nums[l] + nums[r] < target:
+#             l += 1
+#         elif nums[l] + nums[r] > target:
+#             r -= 1
+            
+#     return False
+
 def twoSum(nums, target):
-    nums.sort()
+    nums = [[n, i] for i, n in enumerate(nums)]
+    nums.sort(key = lambda x: x[0])
     l, r = 0, len(nums) - 1
 
     while l < r:
-        if nums[l] + nums[r] == target:
-            return True
-        elif nums[l] + nums[r] < target:
+        sum = nums[l][0] + nums[r][0]
+
+        if sum == target:
+            return [nums[l][1], nums[r][1]]
+        elif sum < target:
             l += 1
-        elif nums[l] + nums[r] > target:
+        else:
             r -= 1
-            
-    return False
+
+    return []
 
 print(twoSum([4, 1, 9, 7, 5, 3, 16], 14))
 print(twoSum([2, 1, 5, 7], 4))
+print(twoSum([2, 7, 11, 15], 9))
+print(twoSum([3, 2, 4], 6))
+print(twoSum([3, 3], 6))

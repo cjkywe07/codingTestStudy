@@ -1,4 +1,4 @@
-# Depth First Search(DFS) - 깊이우선탐색
+# PreOrder, InOrder, PostOrder
 
 from binaryTree_01 import bt
 

@@ -6,7 +6,7 @@
 또, "뒤로가기"와 "앞으로가기"가 작동하도록 구현하라.
 
 - BrowserHistory(string homepage)를 호출하면 브라우저는 homepage에서 시작이 된다.
-- void visit(string url)을 호출하면 현재 page의 앞에 있는 페이지기록은 다 삭제가 되고 url로 방문을 한다.
+- void visit(string url)을 호출하면 현재 page의 앞에 있는 페이지 기록은 다 삭제가 되고 url로 방문을 한다.
 - string back(int steps)을 호출하면 steps 수 만큼 "뒤로가기"를 한다. "뒤로가기"를 할 수 있는 page 개수가 x이고
   step > x 라면 x번만큼만 "뒤로가기" 한다. "뒤로가기"가 완료되면 현재 url을 return 한다.
 - string forward(int steps)을 호출하면 steps 수 만큼 "앞으로가기"를 한다. "앞으로가기"를 할 수 있는 page 개수가 x이고
@@ -14,7 +14,7 @@
 
 ex)
     Input :                                             Output :
-    browserHistory = BrowserHistory("leetcode.com")     None
+    browserHistory = BrowserHistory("leetcode.com")     
     browserHistory.visit("google.com")                  None
     browserHistory.visit("facebook.com")                None
     browserHistory.visit("youtube.com")                 None

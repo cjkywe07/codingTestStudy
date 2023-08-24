@@ -41,8 +41,8 @@ def longestConsecutive(nums):
     longestCnt = max(longestCnt, cnt)
     return longestCnt
 
-print(longestConsecutive([100,4,200,1,3,2]))
-print(longestConsecutive([0,3,7,2,5,8,4,6,0,1]))
-print(longestConsecutive([11,3,9,2,10,1,12]))
-print(longestConsecutive([7,3,9,2,11,1,12]))
+print(longestConsecutive([100, 4, 200, 1, 3, 2]))
+print(longestConsecutive([0, 3, 7, 2, 5, 8, 4, 6, 0, 1]))
+print(longestConsecutive([11, 3, 9, 2, 10, 1, 12]))
+print(longestConsecutive([7, 3, 9, 2, 11, 1, 12]))
 print(longestConsecutive([]))

@@ -5,11 +5,11 @@
 nums 원소를 가지고 만들 수 있는 가장 긴 연속된 수의 개수는 몇개인지 반환하시오.
 
 ex)
-    Input: nums = [100,4,200,1,3,2]
-    Output: 4 (가장 긴 연속된 수: [1,2,3,4])
+    Input: nums = [100, 4, 200, 1, 3, 2]
+    Output: 4 (가장 긴 연속된 수: [1, 2, 3, 4])
 
-    Input: nums = [0,3,7,2,5,8,4,6,0,1]
-    Output: 9 (가장 긴 연속된 수: [0,1,2,3,4,5,6,7,8])
+    Input: nums = [0, 3, 7, 2, 5, 8, 4, 6, 0, 1]
+    Output: 9 (가장 긴 연속된 수: [0, 1, 2, 3, 4, 5, 6, 7, 8])
  
 
 제약조건
@@ -83,6 +83,6 @@ def longestConsecutive(nums):
 
     return longestCnt
 
-print(longestConsecutive([100,4,200,1,3,2]))
-print(longestConsecutive([0,3,7,2,5,8,4,6,0,1]))
+print(longestConsecutive([100, 4, 200, 1, 3, 2]))
+print(longestConsecutive([0, 3, 7, 2, 5, 8, 4, 6, 0, 1]))
 print(longestConsecutive([]))

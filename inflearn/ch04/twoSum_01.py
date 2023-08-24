@@ -26,18 +26,42 @@ ch02 List 의 Two Sum 문제
 
 # ------------------------------------------------------------
 
+# def twoSum(nums, target):
+#     memo = {}
+
+#     for v in nums:
+#         memo[v] = 1
+
+#     for v in nums:
+#         needed_num = target - v
+#         if needed_num != v and (needed_num in memo):
+#             return True
+        
+#     return False
+
 def twoSum(nums, target):
     memo = {}
 
-    for v in nums:
-        memo[v] = 1
+    for i, v in enumerate(nums):
+        if v in memo:
+            memo[v].append(i)
+        else:
+            memo[v] = [i]
 
     for v in nums:
         needed_num = target - v
-        if needed_num != v and (needed_num in memo):
-            return True
-        
-    return False
 
-# print(twoSum([4, 1, 9, 7, 5, 3, 16], 14))
+        if needed_num in memo:
+            if v == needed_num:
+                if len(memo[v]) >= 2:
+                    return[memo[v][0], memo[v][1]]
+            else:
+                return [memo[v][0], memo[needed_num][0]]
+        
+    return []
+
+print(twoSum([4, 1, 9, 7, 5, 3, 16], 14))
 print(twoSum([2, 1, 5, 7], 4))
+print(twoSum([2, 7, 11, 15], 9))
+print(twoSum([3, 2, 4], 6))
+print(twoSum([3, 3], 6))

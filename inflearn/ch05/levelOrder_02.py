@@ -1,9 +1,9 @@
-# Breadth First Search(BFS) - 너비우선탐색
+# Level Order
 
 from collections import deque
 from binaryTree_01 import bt
 
-def bfs(root):
+def levelOrder(root):
     if root is None:
         return []
 
@@ -22,4 +22,4 @@ def bfs(root):
     
     return visited
 
-print(bfs(bt.root))
+print(levelOrder(bt.root))
