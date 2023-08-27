@@ -43,17 +43,16 @@ from collections import deque
 from arrayToTree_04 import arrayToTree
 
 def maxDepth(root):
-    max_depth = 0
-
     if root == None:
         return max_depth
     
+    max_depth = 0
     q = deque()
     q.append((root, 1))
 
     while q:
         curr_node, curr_depth = q.popleft()
-        max_depth = curr_depth
+        max_depth = max(max_depth, curr_depth)
 
         if curr_node.left:
             q.append((curr_node.left, curr_depth + 1))

@@ -32,4 +32,7 @@
 너비 우선 탐색 (BFS; Breadth First Search) - tree의 level order 순회와 유사
 깊이 우선 탐색 (DFS; Depth First Search)
 
-
+★코테 적용 방법★
+    (1) 그래프 구현
+    (2) DFS 깊이 우선 탐색
+    (3) BFS 너비 우선 탐색

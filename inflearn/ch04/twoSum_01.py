@@ -41,23 +41,13 @@ ch02 List 의 Two Sum 문제
 
 def twoSum(nums, target):
     memo = {}
-
-    for i, v in enumerate(nums):
-        if v in memo:
-            memo[v].append(i)
-        else:
-            memo[v] = [i]
-
-    for v in nums:
-        needed_num = target - v
-
-        if needed_num in memo:
-            if v == needed_num:
-                if len(memo[v]) >= 2:
-                    return[memo[v][0], memo[v][1]]
-            else:
-                return [memo[v][0], memo[needed_num][0]]
-        
+    
+    for i, num in enumerate(nums):
+        needed = target - num
+        if needed in memo:
+            return [memo[needed], i]
+        memo[num] = i
+    
     return []
 
 print(twoSum([4, 1, 9, 7, 5, 3, 16], 14))
