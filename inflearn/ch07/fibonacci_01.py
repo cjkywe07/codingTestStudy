@@ -1,4 +1,4 @@
-# fibonacci sequence - 피보나치 수열
+# fibonacci sequence(피보나치 수열)
 
 '''반복문'''
 def fibo(n):
@@ -26,26 +26,26 @@ def fibo_r(n):
 '''DP'''
 # 재계산 제거 - O(n)
 # (1) Top-down 방식 (재귀 사용)
-memo = {}
+memo_1 = {}
 
 def fibo_1(n):
     if n == 1 or n == 2:
         return 1
     
-    if n not in memo:
-        memo[n] = fibo_1(n - 1) + fibo_1(n - 2)
+    if n not in memo_1:
+        memo_1[n] = fibo_1(n - 1) + fibo_1(n - 2)
 
-    return memo[n]
+    return memo_1[n]
 
 
 # (2) Bottom-up 방식 (반복문 사용)
-memo = {1: 1, 2: 1}
+memo_2 = {1: 1, 2: 1}
 
 def fibo_2(n):
     for i in range(3, n + 1):
-        memo[i] = memo[i - 1] + memo[i - 2]
+        memo_2[i] = memo_2[i - 1] + memo_2[i - 2]
 
-    return memo[n]
+    return memo_2[n]
 
 
 print(fibo(7))
