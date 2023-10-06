@@ -2,7 +2,8 @@
 
 '''
 정수가 저장된 배열 nums가 주어졌을 때, nums의 원소 중 두 숫자를 더해서
-target이 될 수 있으면 True, 불가능하면 False를 반환하세요. / target이 될 수 있는 인덱스를 반환하세요.
+target이 될 수 있으면 True, 불가능하면 False를 반환하세요.
+(or) target이 될 수 있는 인덱스를 반환하세요.
 단, 같은 원소를 두 번 사용할 수 없으며, 어떤 순서로든 답을 반환할 수 있습니다.
 
 ex)
@@ -10,7 +11,7 @@ ex)
     Output: True / [2, 4]
 
     Input: nums = [2, 1, 5, 7] / target = 4
-    Output: False / []
+    Output: False / None
 
     Input: nums = [2, 7, 11, 15] / target = 9
     Output: True / [0, 1]
@@ -35,18 +36,20 @@ ex)
 
     2^31 --> 약 2 * 10^9 이고,
     int 자료형으로는 -2^31 ~ 2^31 + 1 --> 약 -(2 * 10^9) ~ (2 * 10^9) + 1 까지 표현 가능
-    즉, -10^9 <= nums[i], target <= 10^9 에 따라 int 자료형 사용 가능
+    즉, -10^9 <= nums[i], target <= 10^9 에 따라
+    int 자료형으로 표현할 수 있는 값의 범위가 더 넓으므로 사용 가능
 
 (2) 접근 방법
     보통 완전탐색으로 시작
     but, 이중반복문 - O(n^2) -> 실제로는 선택X, 연습만 해보기
 
 (3) 코드 설계
-    for i 0 ~ n
-        for j i+1 ~ n
-            if nums[i] + nums[j] == 14
-                return True
-    return False
+    for i 0 ~ n-2
+        for j i+1 ~ n-1
+            if nums[i] + nums[j] == target
+                return [i, j]
+
+    return None
 
 (4) 코드 구현
 '''
@@ -56,14 +59,14 @@ ex)
 def twoSum(nums, target):
     n = len(nums)
     
-    for i in range(n):
+    for i in range(n - 1):
         for j in range(i + 1, n):
             if nums[i] + nums[j] == target:
                 # return True
                 return [i, j]
             
     # return False
-    return []
+    return None
 
 print(twoSum([4, 1, 9, 7, 5, 3, 16], 14))
 print(twoSum([2, 1, 5, 7], 4))

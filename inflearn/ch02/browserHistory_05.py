@@ -6,7 +6,7 @@
 또, "뒤로가기"와 "앞으로가기"가 작동하도록 구현하라.
 
 - BrowserHistory(string homepage)를 호출하면 브라우저는 homepage에서 시작이 된다.
-- void visit(string url)을 호출하면 현재 page의 앞에 있는 페이지 기록은 다 삭제가 되고 url로 방문을 한다.
+- void visit(string url)을 호출하면 현재 page의 앞에 있는(다음에 있는) 페이지 기록은 다 삭제가 되고 url로 방문을 한다.
 - string back(int steps)을 호출하면 steps 수 만큼 "뒤로가기"를 한다. "뒤로가기"를 할 수 있는 page 개수가 x이고
   step > x 라면 x번만큼만 "뒤로가기" 한다. "뒤로가기"가 완료되면 현재 url을 return 한다.
 - string forward(int steps)을 호출하면 steps 수 만큼 "앞으로가기"를 한다. "앞으로가기"를 할 수 있는 page 개수가 x이고
@@ -25,6 +25,13 @@ ex)
     rowserHistory.forward(2)                            "linkedin.com"
     browserHistory.back(2)                              "google.com"
     browserHistory.back(7)                              "leetcode.com"
+
+    Input:
+    ["BrowserHistory", "visit", "visit", "visit", "back", "back", "forward", "visit", "forward", "back", "back"]
+    [["leetcode.com"], ["google.com"], ["facebook.com"], ["youtube.com"], [1], [1], [1], ["linkedin.com"], [2], [2], [7]]
+
+    Output:
+    [null, null, null, null, "facebook.com", "google.com", "facebook.com", null, "linkedin.com", "google.com", "leetcode.com"]
 
 제약조건
     1 <= homepage.length <= 20
@@ -53,20 +60,20 @@ ex)
 
 # ------------------------------------------------------------
 
-class ListNode(object):
+class ListNode:
     def __init__(self, data = 0, prev = None, next = None):
         self.data = data
         self.prev = prev
         self.next = next
 
-class BrowserHistory(object):
+class BrowserHistory:
     def __init__(self, homepage):
+        # head는 사실 필요 없음
         self.head = self.curr = ListNode(homepage)
 
     def visit(self, url):
-        self.curr.next = ListNode(url, self.curr)
+        self.curr.next = ListNode(url, prev = self.curr)
         self.curr = self.curr.next
-        return None
 
     def back(self, steps):
         while steps > 0 and self.curr.prev != None:

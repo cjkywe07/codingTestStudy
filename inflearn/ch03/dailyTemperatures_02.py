@@ -9,6 +9,9 @@ ex)
     Input: temperatures = [73, 74, 75, 71, 69, 72, 76, 73]
     Output: [1, 1, 4, 2, 1, 1, 0, 0]
 
+    Input: temperatures = [73, 71, 69, 67, 72]
+    Output: [0, 3, 2, 1, 0]
+
     Input: temperatures = [30, 40, 50, 60]
     Output: [1, 1, 1, 0]
 
@@ -50,12 +53,12 @@ def dailyTemperatures(temperatures):
     answer = [0] * len(temperatures)
     stack = []
 
-    for cur_day, cur_temp in enumerate(temperatures):
-        while stack and stack[-1][1] < cur_temp:
-            prev_day = stack.pop()[0]
-            answer[prev_day] = cur_day - prev_day
+    for cur_idx, cur_val in enumerate(temperatures):
+        while stack and stack[-1][1] < cur_val:
+            prev_idx = stack.pop()[0]
+            answer[prev_idx] = cur_idx - prev_idx
             
-        stack.append((cur_day, cur_temp))
+        stack.append((cur_idx, cur_val))
 
     return answer
 

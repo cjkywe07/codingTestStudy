@@ -1,5 +1,6 @@
 # DFS(Depth First Search) - 깊이 우선 탐색
 
+# 인접 리스트
 # graph = {
 #     'A': ['B', 'D', 'E'],
 #     'B': ['A', 'C', 'D'],
@@ -40,4 +41,4 @@ def dfs(cur_v):
             dfs(next_v)
 
 dfs(0)
-print(visited)
+print(list(visited.keys()))

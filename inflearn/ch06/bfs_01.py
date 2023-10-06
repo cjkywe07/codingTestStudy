@@ -2,6 +2,7 @@
 
 from collections import deque
 
+# 인접 리스트
 # graph = {
 #     'A': ['B', 'D', 'E'],
 #     'B': ['A', 'C', 'D'],
@@ -45,26 +46,16 @@ def bfs(graph, start_v):
     
     while q:
         cur_v = q.popleft()
-        for v in graph[cur_v]:
-            if v not in visited:
-                visited[v] = True
-                q.append(v)
+
+        for next_v in graph[cur_v]:
+            if next_v not in visited:
+                visited[next_v] = True
+                q.append(next_v)
     
     return list(visited.keys())
 
 
-''' visited를 set으로 -> 방문 순서 중요하므로 set은 사용 X '''
-# def bfs(graph, start_v):
-#     visited = set({start_v})
-#     q = deque([start_v])
-    
-#     while q:
-#         cur_v = q.popleft()
-#         for v in graph[cur_v]:
-#             if v not in visited:
-#                 visited.add(v)
-#                 q.append(v)
-    
-#     return list(visited)
+''' visited를 set으로 '''
+''' 방문 순서 중요하므로 set은 사용 X '''
 
 print(bfs(graph, 0))

@@ -11,13 +11,13 @@ ch02 List 의 Two Sum 문제
     (리스트와는 달리 in 연산자를 통해 특정 key값이 존재하는지 O(1)의 시간복잡도로 확인 가능)
 
 (3) 코드 설계
-    for v in nums
-        dict[n] = 1
+    dict = {}
 
     for v in nums
         n = target - v
-        if n != v && n in dict
+        if n in dict
             return T
+        dict[v] = 1
 
     return F
 
@@ -30,12 +30,10 @@ ch02 List 의 Two Sum 문제
 #     memo = {}
 
 #     for v in nums:
-#         memo[v] = 1
-
-#     for v in nums:
-#         needed_num = target - v
-#         if needed_num != v and (needed_num in memo):
+#         needed = target - v
+#         if needed in memo:
 #             return True
+#         memo[v] = 1
         
 #     return False
 
@@ -48,7 +46,7 @@ def twoSum(nums, target):
             return [memo[needed], i]
         memo[num] = i
     
-    return []
+    return None
 
 print(twoSum([4, 1, 9, 7, 5, 3, 16], 14))
 print(twoSum([2, 1, 5, 7], 4))

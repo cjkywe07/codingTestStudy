@@ -1,4 +1,4 @@
-# 03 Queue & stack
+# 03 Queue & Stack
 
 1. 큐(Queue)
 

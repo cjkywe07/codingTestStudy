@@ -5,19 +5,21 @@
     2 <= nums.length <= 10^4 에 따라 시간복잡도는 O(n^2) 보다 작은 알고리즘 사용
 
 (2) 접근 방법
-    정렬, two pointer 사용
+    정렬 + two pointer 사용
     정렬 - O(nlogn) / two pointer - O(n)
 
 (3) 코드 설계
+    nums = [[n, i] for i, n in enumerate(nums)]
     nums.sort()
     l = 0
     r = n-1
     
     while l < r
-        if nums[l] + nums[r] == target -> return True
-                             <         -> l += 1
-                             >         -> r -= 1
-    retrun False
+        if nums[l][0] + nums[r][0] == target -> return [nums[l][1], nums[r][1]]
+                                   <         -> l += 1
+                                   >         -> r -= 1
+
+    retrun None
 
 (4) 코드 구현
 '''
@@ -25,7 +27,6 @@
 # ------------------------------------------------------------
 
 # def twoSum(nums, target):
-#     nums = []
 #     nums.sort()
 #     l, r = 0, len(nums) - 1
 
@@ -41,7 +42,8 @@
 
 def twoSum(nums, target):
     nums = [[n, i] for i, n in enumerate(nums)]
-    nums.sort(key = lambda x: x[0])
+    # nums.sort(key = lambda x: x[0])
+    nums.sort()
     l, r = 0, len(nums) - 1
 
     while l < r:
@@ -54,7 +56,7 @@ def twoSum(nums, target):
         else:
             r -= 1
 
-    return []
+    return None
 
 print(twoSum([4, 1, 9, 7, 5, 3, 16], 14))
 print(twoSum([2, 1, 5, 7], 4))

@@ -24,6 +24,11 @@ ex)
 (1) 문제 이해
     1 <= s.length <= 10^4 에 따라 시간복잡도는 O(n^2) 보다 작은 알고리즘 사용
 
+    (1) 괄호의 짝과 개수가 맞는 경우 - True
+    (2) 괄호의 개수는 맞지만 짝이 안맞는 경우 - False
+    (3) 여는 괄호의 개수가 더 많은 경우 - False
+    (4) 닫는 괄호의 개수가 더 많은 경우 - False
+
 (2) 접근 방법
     스택 자료구조 사용
 
@@ -31,7 +36,7 @@ ex)
     stack = []
 
     for p in s
-        if  p == '({['
+        if p == '({['
             stack.append(')}]')
         if p == ')}]'
             # 스택이 비어있다면 닫는 괄호가 더 많은 것이므로 False 리턴
@@ -61,9 +66,12 @@ def isValid(s):
             stack.append("}")
         elif p == "[":
             stack.append("]")
+        # 스택이 비어있거나(닫는 괄호 더 많음) / pop한 괄호가 p와 다르다면(짝이 다름)
         elif not stack or stack.pop() != p:
             return False
     
+    # 스택에 괄호가 남아있다면(여는 괄호 더 많음) False
+    # 스택이 비어있다면(짝과 개수가 다 맞음) True
     return not stack
 
 print(isValid(")("))

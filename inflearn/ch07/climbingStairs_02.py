@@ -38,11 +38,11 @@ ex)
 
 (3) 코드 설계
     1) 재귀
-        def cs(n)
-            if n == 1 return 1
-            if n == 2 return 2
+        def cs(n):
+            if n == 1: return 1
+            if n == 2: return 2
 
-            return cs(n-1) + cs(n-2)
+            return cs(n - 1) + cs(n - 2)
 
     2) Top-down
     3) Bottom-up
@@ -53,27 +53,57 @@ ex)
 # ------------------------------------------------------------
 
 # climbStairs
-# (1) Top-down
-memo_1 = {}
 
-def cs_1(n):
-    if n == 1: return 1
-    if n == 2: return 2
+'''(1) Top-down'''
+# (1)
+# memo_1 = {}
+
+# def cs_1(n):
+#     if n == 1: return 1
+#     if n == 2: return 2
     
-    if n not in memo_1:
-        memo_1[n] = cs_1(n - 1) + cs_1(n - 2)
+#     if n not in memo_1:
+#         memo_1[n] = cs_1(n - 1) + cs_1(n - 2)
 
-    return memo_1[n]
+#     return memo_1[n]
+
+# (2)
+def cs_1(n):
+    memo = {}
+
+    def dp(n):
+        if n == 1: return 1
+        if n == 2: return 2
+            
+        if n not in memo:
+            memo[n] = dp(n - 1) + dp(n - 2)
+
+        return memo[n]
+
+    return dp(n)
 
 
-# (2) Bottom-up
-memo_2 = {1: 1, 2: 2}
+'''(2) Bottom-up'''
+# (1)
+# memo_2 = {1: 1, 2: 2}
 
+# def cs_2(n):
+#     for i in range(3, n + 1):
+#         memo_2[i] = memo_2[i - 1] + memo_2[i - 2]
+
+#     return memo_2[n]
+
+# (2)
 def cs_2(n):
-    for i in range(3, n + 1):
-        memo_2[i] = memo_2[i - 1] + memo_2[i - 2]
+    memo = {1: 1, 2: 2}
 
-    return memo_2[n]
+    def dp(n):
+        for i in range(3, n + 1):
+            memo[i] = memo[i - 1] + memo[i - 2]
+
+        return memo[n]
+
+    return dp(n)
 
 
 print(cs_1(5))

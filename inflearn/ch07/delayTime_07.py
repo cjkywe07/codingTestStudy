@@ -10,19 +10,19 @@ k 노드에서 신호를 보낼 때, 모든 노드에 신호가 도달하기 위
 (한 노드에서 연결된 여러 개의 edge에 신호를 동시에 전달할 수 있습니다.)
 
 ex)
-    Input: times = [[2,1,1],[2,3,1],[3,4,1]], n = 4, k = 2
+    Input: times = [[2, 1, 1], [2, 3, 1], [3, 4, 1]], n = 4, k = 2
     Output: 2
 
-    Input: times = [[1,2,1]], n = 2, k = 1
+    Input: times = [[1, 2, 1]], n = 2, k = 1
     Output: 1
 
-    Input: times = [[1,2,1]], n = 2, k = 2
+    Input: times = [[1, 2, 1]], n = 2, k = 2
     Output: -1
 
-    Input: times = [[2,1,2],[2,3,5],[2,4,1],[4,3,3]], n = 4, k = 2
+    Input: times = [[2, 1, 2], [2, 3, 5], [2, 4, 1], [4, 3, 3]], n = 4, k = 2
     Output: 4
 
-    Input: times = [[2,1,2],[2,3,5],[2,4,1],[4,3,3]], n = 4, k = 3
+    Input: times = [[2, 1, 2], [2, 3, 5], [2, 4, 1], [4, 3, 3]], n = 4, k = 3
     Output: -1
 
 제약조건
@@ -43,7 +43,7 @@ ex)
     1 <= 간선 개수 <= 6000
     1 <= 연결된 두 개의 노드 <= n
     연결된 두 개의 노드는 서로 다른 숫자
-    0 <= 가중치 <= 100
+    0 <= 비용(가중치) <= 100
     두 노드를 연결하는 간선 수는 하나
 
 (2) 접근 방법
@@ -51,15 +51,16 @@ ex)
 
 (3) 코드 설계
     그래프 구현
-        O(times.length) -> O(6000) -> O(10^4) 미만
+        O(간선 개수) -> O(6000) -> O(10^4) 미만
     
     다익스트라 알고리즘
-        O(ElogE) -> O(6000 * log6000) -> O(6000 * 약 13) -> O(10^5) 미만
+        heappush/heappop이 O(logE) 이고, 간선의 개수만큼 일어날 수 있으므로,
+        O(ElogE) -> O(6000 * log6000) -> O( 6000 * 약 log(8*(2^10)) ) -> O(6000 * 13) -> O(10^5) 미만
 
     방문 못한 노드 찾기
         O(n)
 
-    최소값 중에서 최대값 찾기
+    최소비용 중에서 최댓값 찾기
         O(n)
 
 (4) 코드 구현
@@ -73,8 +74,8 @@ import heapq
 def networkDelayTime(times, n, k):
     # 그래프 구현
     graph = defaultdict(list)
-    for time in times:
-        graph[time[0]].append((time[2], time[1]))
+    for u, v, w in times:
+        graph[u].append((w, v))
 
     # 다익스트라 알고리즘
     costs = {}
@@ -82,23 +83,22 @@ def networkDelayTime(times, n, k):
     heapq.heappush(pq, (0, k))
 
     while pq:
-        cur_cost, cur_node = heapq.heappop(pq)
+        cur_cost, cur_v = heapq.heappop(pq)
 
-        if cur_node not in costs:
-            costs[cur_node] = cur_cost
+        if cur_v not in costs:
+            costs[cur_v] = cur_cost
 
-            for cost, next_node in graph[cur_node]:
+            for cost, next_v in graph[cur_v]:
                 next_cost = cur_cost + cost
-                heapq.heappush(pq, (next_cost, next_node))
+                heapq.heappush(pq, (next_cost, next_v))
 
     # 방문 못한 노드 찾기
-    for node in range(1, n + 1):
-        if node not in costs:
+    for v in range(1, n + 1):
+        if v not in costs:
             return -1
 
-    # 최소값 중에서 최대값 찾기
+    # 최소비용 중에서 최댓값 찾기
     return max(costs.values())
-
 
 print(
     networkDelayTime(

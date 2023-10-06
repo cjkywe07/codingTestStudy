@@ -25,13 +25,17 @@
 # ------------------------------------------------------------
 
 def longestConsecutive(nums):
-    if not len(nums): return 0
+    if len(nums) == 0:
+        return 0
 
     nums.sort()
     longestCnt = 0
     cnt = 1
 
     for i in range(len(nums) - 1):
+        if nums[i] == nums[i + 1]:
+            continue
+
         if nums[i] + 1 == nums[i + 1]:
             cnt += 1
         else:
@@ -45,4 +49,5 @@ print(longestConsecutive([100, 4, 200, 1, 3, 2]))
 print(longestConsecutive([0, 3, 7, 2, 5, 8, 4, 6, 0, 1]))
 print(longestConsecutive([11, 3, 9, 2, 10, 1, 12]))
 print(longestConsecutive([7, 3, 9, 2, 11, 1, 12]))
+print(longestConsecutive([1, 2, 0, 1]))
 print(longestConsecutive([]))

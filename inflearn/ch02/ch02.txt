@@ -27,7 +27,7 @@ random access
     -> 데이터 접근 : O(1)
 
     하지만, linked list는 데이터가 메모리상에서 연속적/순차적으로 저장되어있지 않기 때문에
-    raddom access가 불가능하고 n번째 데이터에 접근하려면 n번의 연산을 해야함
+    random access가 불가능하고 n번째 데이터에 접근하려면 n번의 연산을 해야함
     -> 데이터 접근 : O(n)
 
 static array의 한계

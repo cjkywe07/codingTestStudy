@@ -9,7 +9,7 @@
 
     알고리즘
         어떠한 문제를 해결하기 위해 정해진 일련의 절차나 방법
-        각 문제에 적합한 알고리즘을 선택할 수 있어야 하며 평가할 수 있어야 함
+        각 문제에 적합한 알고리즘을 선택하고 평가할 수 있어야 함
             평가기준 : 시간 복잡도
         ex) BFS, DFS, Binary Search, Dijkstra 등
 
@@ -56,23 +56,41 @@
     100,000,000(10^8)이 넘으면 시간 제한을 초과할 가능성이 있다
 
     ex)
-    (1) 1 <= n <= 10^5
-        -> O(n^3)으로 풀면 10^15 (X)
-        -> O(n^2)으로 풀면 10^10 (X) - 즉 n^2 이상의 시간복잡도로 풀면 안된다는 의미
-        -> O(1) O(logn) O(n) O(nlogn) 등으로 풀어야 함
+        (1) 1 <= n <= 10^5
+            -> O(n^3)으로 풀면 10^15 (X)
+            -> O(n^2)으로 풀면 10^10 (X) - 즉 n^2 이상의 시간복잡도로 풀면 안된다는 의미
+            -> O(1) O(logn) O(n) O(nlogn) 등으로 풀어야 함
 
-    (2) 1 <= n <= 10^4
-        -> O(n^2)으로 풀면 10^8 (△) - 약간 애매
-        -> O(1) O(logn) O(n) O(nlogn) 등으로 풀어야 함
+        (2) 1 <= n <= 10^4
+            -> O(n^2)으로 풀면 10^8 (△) - 약간 애매
+            -> O(1) O(logn) O(n) O(nlogn) 등으로 풀어야 함
 
-    (3) 1 <= n <= 10^3
-        -> O(n^2)으로 풀면 10^6 (O) - O(n^2)으로도 풀어도 됨
+        (3) 1 <= n <= 10^3
+            -> O(n^2)으로 풀면 10^6 (O) - O(n^2)으로도 풀어도 됨
 
     ex)
-    2 <= nums.length <= 10^4 -> O(n) O(nlogn) 등으로 풀어야 함
-    -10^9 <= nums[i] <= 10^9
-    -10^9 <= target <= 10^9
+        2 <= nums.length <= 10^4 -> O(n^2) 미만으로 풀어야 함
+        -10^9 <= nums[i] <= 10^9
+        -10^9 <= target <= 10^9
 
-    nums.length, nums[i], target 중 n을 설정하는 방법은
-    숫자가 커질수록 실행시간이 증가하는 것을 찾으면 됨
-    위의 예시에서는 nums.length가 n
+        nums.length, nums[i], target 중 n을 설정하는 방법은
+        숫자가 커질수록 실행시간이 증가하는 것을 찾으면 됨
+        위의 예시에서는 nums.length가 n
+
+--------------------------------------------------------------------------------
+
+연습문제
+    01  Two Sum
+    02  Design Browser History
+    03  Valid Parentheses
+    04  Daily Temperatures
+    05  Longest Consecutive Sequence
+    06  Lowest Common Ancestor of a Binary Tree
+    07  Maximum Depth of Binary Tree
+    08  Number of Islands
+    09  Shortest Path in Binary Matrix
+    10  Keys and Rooms
+    11  Climbing Stairs
+    12  Min Cost Climbing Stairs
+    13  Unique Paths
+    14  Network Delay Time

@@ -2,7 +2,7 @@
 
 '''
 (1) 문제 이해
-    0 <= nums.length <= 10^4 에 따라 시간복잡도는 O(n^2) 보다 작은 알고리즘 사용
+    0 <= node 개수 <= 10^4 에 따라 시간복잡도는 O(n^2) 보다 작은 알고리즘 사용
 
 (2) 접근 방법
     postorder 이용 - O(n)
@@ -30,6 +30,7 @@ def maxDepth(root):
     right_depth = maxDepth(root.right)
 
     return max(left_depth, right_depth) + 1
+
 
 root = arrayToTree([3, 9, 20, None, None, 15, 7])
 print(maxDepth(root))

@@ -11,7 +11,7 @@ ex)
     Output: 2
 
 제약조건
-    0 <= node의 개수 <= 10^4
+    0 <= node 개수 <= 10^4
     -100 <= Node.val <= 100
 '''
 
@@ -19,7 +19,7 @@ ex)
 
 '''
 (1) 문제 이해
-    0 <= nums.length <= 10^4 에 따라 시간복잡도는 O(n^2) 보다 작은 알고리즘 사용
+    0 <= node 개수 <= 10^4 에 따라 시간복잡도는 O(n^2) 보다 작은 알고리즘 사용
 
 (2) 접근 방법
     level order 이용 - O(n)
@@ -30,7 +30,7 @@ ex)
     
     while q:
         curr = q.popleft()
-        q.append((leftRight, depth))
+        q.append((left/right, depth))
 
     return maxDepth
 
@@ -44,22 +44,23 @@ from arrayToTree_04 import arrayToTree
 
 def maxDepth(root):
     if root == None:
-        return max_depth
+        return 0
     
     max_depth = 0
     q = deque()
     q.append((root, 1))
 
     while q:
-        curr_node, curr_depth = q.popleft()
-        max_depth = max(max_depth, curr_depth)
+        cur_node, cur_depth = q.popleft()
+        max_depth = max(max_depth, cur_depth)
 
-        if curr_node.left:
-            q.append((curr_node.left, curr_depth + 1))
-        if curr_node.right:
-            q.append((curr_node.right, curr_depth + 1))
+        if cur_node.left:
+            q.append((cur_node.left, cur_depth + 1))
+        if cur_node.right:
+            q.append((cur_node.right, cur_depth + 1))
 
     return max_depth
+
 
 root = arrayToTree([3, 9, 20, None, None, 15, 7])
 print(maxDepth(root))

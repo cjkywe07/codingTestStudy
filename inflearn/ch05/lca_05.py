@@ -27,13 +27,14 @@ ex)
 
 '''
 (1) 문제 이해
-    0 <= nums.length <= 10^5 에 따라 시간복잡도는 O(n^2) 보다 작은 알고리즘 사용
+    0 <= node 개수 <= 10^5 에 따라 시간복잡도는 O(n^2) 보다 작은 알고리즘 사용
 
 (2) 접근 방법
     postorder 이용 - O(n)
 
 (3) 코드 설계
-    base case
+    root == None:
+        return None
 
     left = lca()
     right = lca()
@@ -54,6 +55,7 @@ ex)
 
 from arrayToTree_04 import arrayToTree
 
+# lowestCommonAncestor
 def lca(root, p, q):
     if root == None:
         return None
@@ -65,8 +67,8 @@ def lca(root, p, q):
         return root.data
     elif left and right:
         return root.data
-    
-    return left or right
+    else:
+        return left or right
 
 root = arrayToTree([3, 5, 1, 6, 2, 0, 8, None, None, 7, 4])
 print(lca(root, 5, 1))

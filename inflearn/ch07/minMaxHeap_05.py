@@ -25,14 +25,14 @@ print('최대힙 :', heap)
 print('삭제값 : ', heapq._heappop_max(heap))
 print('최대힙 :', heap)
 
-# [ _heappush_max() -> 존재X ]
+# [ heapq._heappush_max() -> 존재X ]
 # heapq._heappush_max(heap, 8)
 # print('최대힙 :', heap)
 print('------------------------------')
 
 # (2)
 heap = [7, 3, 9, 4, 1, 2, 6]
-heap = [-1 * i for i in heap]
+heap = [-1 * n for n in heap]
 
 heapq.heapify(heap)
 print('최대힙 :', heap)
@@ -49,7 +49,7 @@ print('------------------------------')
 
 # (3)
 heap = [7, 3, 9, 4, 1, 2, 6]
-heap = [(-1 * i, i) for i in heap]
+heap = [(-1 * n, n) for n in heap]
 
 heapq.heapify(heap)
 print('최대힙 :', heap)

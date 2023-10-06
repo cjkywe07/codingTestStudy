@@ -41,23 +41,38 @@ ex)
         -> (1, 6) 까지 가는 방법수 + (2, 5) 까지 가는 방법수
 
     base case
-    (0, 0)까지 가는 방법수 -> 1
+    1) (0, 0)까지 가는 방법수 -> 1
+    2) (0, x) or (x, 0)까지 가는 방법수 -> 모두 1
 
     DP 이용
 
 (3) 코드 설계
-    1) 완전탐색(dfs)
-        def dfs(r, c):
+    1) 완전탐색
+        # r : m - 1 / c : n - 1
+        def dp(r, c):
             unique_paths = 0
 
             if r == 0 and c == 0:
                 return 1
             
             if r - 1 >= 0:
-                unique_paths += dfs(r - 1, c)
+                unique_paths += dp(r - 1, c)
 
             if c - 1 >= 0:
-                unique_paths += dfs(r, c - 1)
+                unique_paths += dp(r, c - 1)
+            
+            return unique_paths
+
+        --------------------------------------
+
+        def dp(r, c):
+            unique_paths = 0
+
+            if r == 0 or c == 0:
+                return 1
+            
+            unique_paths += dp(r - 1, c)
+            unique_paths += dp(r, c - 1)
             
             return unique_paths
 
@@ -70,33 +85,54 @@ ex)
 # ------------------------------------------------------------
 
 # uniquePaths
-# (1) Top-down
 
+'''(1) Top-down'''
+# (1)
+# def up_1(m, n):
+#     memo = [[-1] * n for _ in range(m)]
+    
+#     def dp(r, c):
+#         unique_paths = 0
+
+#         if r == 0 and c == 0:
+#             memo[r][c] = 1
+        
+#         if memo[r][c] == -1:
+#             if r - 1 >= 0:
+#                 unique_paths += dp(r - 1, c)
+
+#             if c - 1 >= 0:
+#                 unique_paths += dp(r, c - 1)
+
+#             memo[r][c] = unique_paths
+
+#         return memo[r][c]
+            
+#     return dp(m - 1, n - 1)
+
+# (2)
 def up_1(m, n):
     memo = [[-1] * n for _ in range(m)]
     
-    def dfs(r, c):
+    def dp(r, c):
         unique_paths = 0
 
-        if r == 0 and c == 0:
-            memo[r][c] = 1
-            return memo[r][c]
-        
         if memo[r][c] == -1:
-            if r - 1 >= 0:
-                unique_paths += dfs(r - 1, c)
-
-            if c - 1 >= 0:
-                unique_paths += dfs(r, c - 1)
+            if r == 0 or c == 0:
+                memo[r][c] = 1
+                return memo[r][c]
+            
+            unique_paths += dp(r - 1, c)
+            unique_paths += dp(r, c - 1)
 
             memo[r][c] = unique_paths
 
         return memo[r][c]
             
-    return dfs(m - 1, n - 1)
+    return dp(m - 1, n - 1)
 
 
-# (2) Bottom-up
+'''(2) Bottom-up'''
 def up_2(m, n):
     memo = [[-1] * n for _ in range(m)]
     

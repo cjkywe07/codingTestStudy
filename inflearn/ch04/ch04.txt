@@ -36,7 +36,7 @@ collision
 key-value 쌍이 있을 때 key를 index처럼 사용
 
 in 연산자
-    딕셔너리에서 key가 존재하는지 확인 하여 True/False 반환
+    딕셔너리에서 key가 존재하는지 확인하여 True/False 반환
     시간복잡도 - O(1)
 
     리스트에서 in 연산자의 시간복잡도 - O(n)
